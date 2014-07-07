@@ -7,4 +7,7 @@ pom.xml.asc
 *.class
 /.lein-*
 /.nrepl-port
-/datomic
+/devops/datomic/backups
+/devops/datomic/data
+/devops/datomic/logs
+/devops/datomic/runtime
