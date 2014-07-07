@@ -3,8 +3,8 @@
 
   :url "https://github.com/greywolve/crimemonitor"
 
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :license {:name "MIT License"
+            :url "http://www.opensource.org/licenses/mit-license.php"}
 
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [compojure "1.1.6"]
