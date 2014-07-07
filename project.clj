@@ -10,8 +10,9 @@
                  [compojure "1.1.6"]
                  [org.clojure/tools.logging "0.2.6"]
                  [puppetlabs/trapperkeeper "0.3.4"]
-                 [com.datomic/datomic-free "0.9.4532"]
-                 [datomic-schema "1.0.2"]]
+                 [com.datomic/datomic-free "0.9.4815.12"
+                  :exclusions [org.clojure/tools.cli
+                               org.slf4j/slf4j-nop]]]
 
   :test-paths ["test" "test-resources"]
 
