@@ -28,6 +28,8 @@
                                   [clj-http "0.7.9"]
                                   [ring-mock "0.1.5"]]}}
 
+  :repl-options {:init-ns crimemonitor.repl}
+
   :aliases {"tk" ["trampoline" "run" "--config" "test-resources/config.ini"]}
 
   :main puppetlabs.trapperkeeper.main)
