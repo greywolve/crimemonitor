@@ -12,7 +12,9 @@
                  [puppetlabs/trapperkeeper "0.3.4"]
                  [com.datomic/datomic-free "0.9.4815.12"
                   :exclusions [org.clojure/tools.cli
-                               org.slf4j/slf4j-nop]]]
+                               org.slf4j/slf4j-nop]]
+                 [datomic-schema "1.1.0"]
+                 [org.clojure/test.check "0.5.8"]]
 
   :test-paths ["test" "test-resources"]
 
