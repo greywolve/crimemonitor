@@ -22,12 +22,12 @@
                                             "datomic:free://localhost:4334/crimemonitor"}
                                 :crimemonitor {:url-prefix "/crimemonitor"}})))
   (alter-var-root #'system tka/init)
-  #_(tka/check-for-errors! system))
+  (tka/check-for-errors! system))
 
 (defn start []
   (alter-var-root #'system
                   (fn [s] (if s (tka/start s))))
-  #_(tka/check-for-errors! system))
+  (tka/check-for-errors! system))
 
 (defn stop []
   (alter-var-root #'system
@@ -45,4 +45,4 @@
 
 (defn reset []
   (stop)
-  (refresh :after 'examples.ring-app.repl/go))
+  (refresh :after 'crimemonitor.repl/go))
