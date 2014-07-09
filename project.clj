@@ -14,7 +14,8 @@
                   :exclusions [org.clojure/tools.cli
                                org.slf4j/slf4j-nop]]
                  [datomic-schema "1.1.0"]
-                 [org.clojure/test.check "0.5.8"]]
+                 [org.clojure/test.check "0.5.8"]
+                 [org.clojure/tools.namespace "0.2.4"]]
 
   :test-paths ["test" "test-resources"]
 
