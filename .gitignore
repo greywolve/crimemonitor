@@ -12,3 +12,5 @@ pom.xml.asc
 /devops/datomic/data
 /devops/datomic/logs
 /devops/datomic/runtime
+\#*
+.#*
