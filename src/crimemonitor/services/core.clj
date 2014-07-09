@@ -2,7 +2,8 @@
   "Contains the core services for CrimeMonitor"
   (:require [clojure.tools.logging :as log]
             [puppetlabs.trapperkeeper.core :as tk]
-            [crimemonitor.handler :as handler]))
+            [crimemonitor.handler :as handler]
+            [datomic.api :as d]))
 
 (defprotocol SimpleService
   (greet [this caller]))
@@ -30,6 +31,28 @@
   (init [this context]
     (log/info "Initializing hello webservice")
     (log/info ((:greet SimpleService) "Olly"))
-    (let [path (get-in-config [:hello-web :url-prefix])]
+    (let [path (get-in-config [:crimemonitor :url-prefix])]
       (add-ring-handler (handler/app path) path)
       (assoc context :url-prefix path))))
+
+(defprotocol DatomicService
+  (db [this]))
+
+(tk/defservice datomic-service
+  DatomicService
+  [[:ConfigService get-in-config]]
+  (init [this context]
+        (log/info "Initializing datomic service")
+    (let [uri (get-in-config [:datomic :uri])]
+      (d/create-database uri)
+      (assoc context :conn (d/connect uri))))
+  (start [this context]
+         (log/info "Starting datomic service")
+         context)
+  (stop [this context]
+        (log/info "Stopping datomic service")
+        (d/release (:conn context))
+        context)
+  (db [this]
+      (let [conn (:conn (service-context this))]
+        (d/db conn))))
